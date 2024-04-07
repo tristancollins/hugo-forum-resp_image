@@ -3,5 +3,16 @@
   {{ range site.RegularPages }}
     <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
     {{ .Summary }}
-  {{ end }}
+    {{ $thumbnail:= .Resources.GetMatch .Params.thumbnail }}
+    {{ with $thumbnail }}
+    {{ with .Process "webp fill 120x120 q1" }}
+              <img
+            src="{{ .RelPermalink }}"
+            width="{{ .Width }}"
+            height="{{ .Height }}"
+            alt="{{ .Title }}"
+		/>
+	      {{ end }}
+	      {{ end }}
+   {{ end }}
 {{ end }}

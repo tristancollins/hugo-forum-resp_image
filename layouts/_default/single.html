@@ -1,4 +1,26 @@
 {{ define "main" }}
+<div class="section">
+  <div class="container post-header">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        {{ if .Params.image }}
+	{{ $image := .Resources.GetMatch $.Params.image }}
+	{{ $image := $image.Process "webp fill 320x240 q1" }}
+	{{ with $image }}
+        <div class="post-image">
+          <img
+            src="{{ .RelPermalink }}"
+            width="{{ .Width }}"
+            height="{{ .Height }}"
+            alt="{{ .Title }}"
+          /> <-HEADER IMAGE
+        </div>
+        {{ end }}
+	{{ end }}
+      </div>
+    </div>
+  </div>
+</div>
   <h1>{{ .Title }}</h1>
 
   {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
