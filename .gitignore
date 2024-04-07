@@ -1,0 +1,14 @@
+.DS_Store
+.DS_Store/
+node_modules
+.idea
+.vs_code/
+public/
+resources/
+.hugo_build.lock
+hugo_stats.json
+# Local Netlify folder
+.netlify
+node_modules/
+*.code-workspace
+_vendor
